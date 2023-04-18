@@ -13,13 +13,20 @@ export default {
   },
   methods:{
     handleFilter(){
-      axios.get(store.apiURL, {
-        params: {
-          archetype: this.store.selectedArchetype
-        }
-      }).then((resp) => {
-        this.store.cards = resp.data.data;
-      })
+      if (this.store.selectedArchetype) {
+        axios.get(store.apiURL, {
+          params: {
+            archetype: this.store.selectedArchetype
+          }
+        }).then((resp) => {
+          console.log(resp);
+          this.store.cards = resp.data.data;
+        })
+      } else{
+        axios.get(store.apiURL).then((resp) => {
+          this.store.cards = resp.data.data;
+        })
+      }
     }
   }
 }
