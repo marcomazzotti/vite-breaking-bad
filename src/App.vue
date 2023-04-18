@@ -1,11 +1,12 @@
 <script>
 import axios from "axios";
+import AppFilter from "./components/AppFilter.vue";
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import {store} from "./store";
 
 export default{
-    components: { AppHeader, AppMain },
+    components: { AppHeader, AppMain, AppFilter },
     data(){
       return{
         store
