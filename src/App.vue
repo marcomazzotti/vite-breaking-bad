@@ -11,11 +11,26 @@ export default{
       return{
         store
       }
-    },
+  },
     mounted() {
-    axios.get(store.apiURL).then((resp) => {
-      this.store.cards = resp.data.data;
-    })
+    this.getCards();
+  },
+  methods: {
+    getCards(){
+      const params = {};
+      if(this.store.selectedArchetype){
+        params.archetype = this.store.selectedArchetype
+      }
+      axios.get(this.store.apiURL, {
+        params
+      }).then((resp) => {
+        console.log(resp);
+        this.store.cards = resp.data.data
+      })
+    },
+    handleFilter() {
+      this.getCards
+    }
   }
 }
 </script>
